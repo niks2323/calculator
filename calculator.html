@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Uros Burda Praktikum Kalkulator</title>
+<link rel="stylesheet" href="index.css">
+<link rel="stylesheet" href="inf.js">
+</head>
+<body>
+  <div id="calculator">
+  
+  </div>
+<div id="calculator">
+    <input type="text" id="display" >
+    <div id="buttons">
+      <button>1</button>
+      <button>2</button>
+      <button>3</button>
+      <button>+</button>
+      <button>4</button>
+      <button>5</button>
+      <button>6</button>
+      <button>-</button>
+      <button>7</button>
+      <button>8</button>
+      <button>9</button>
+      <button>*</button>
+      <button>.</button>
+      <button>0</button>
+      <button>/</button>
+      <button>C</button>
+      <button>=</button>
+    </div>
+
+    <script>
+      function appendToDisplay(value) {
+    const display = document.getElementById('display');
+    display.value += value;
+  }
+  function clearDisplay() {
+    const display = document.getElementById('display');
+    display.value = '';
+  }
+  function calculate() {
+    const display = document.getElementById('display');
+    try {
+      display.value = eval(display.value);
+    } catch (error) {
+      display.value = 'Error';
+    }
+  }
+  const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+  button.addEventListener('click', () => {
+    if (button.textContent === 'C') {
+      clearDisplay();
+    } else if (button.textContent === '=') {
+      calculate();
+    } else {
+      appendToDisplay(button.textContent);
+    }
+  });
+});
+    </script>
+  </div>
+  
+</body>
+</html>
